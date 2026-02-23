@@ -74,19 +74,16 @@ async function makeAffiliateUrl(url: string): Promise<string> {
 
 async function shorten(longUrl: string): Promise<string> {
   try {
-    const apiUrl = `https://is.gd/create.php?format=json&url=${encodeURIComponent(longUrl)}`;
+    const apiUrl = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`;
     const resp = await fetch(apiUrl);
     if (!resp.ok) {
-      const errBody = await resp.text();
-      console.error(`is.gd error ${resp.status}: ${errBody}`);
+      console.error(`TinyURL error ${resp.status}`);
       return longUrl;
     }
-    const data = (await resp.json()) as { shorturl?: string; errorcode?: number; errormessage?: string };
-    if (data.shorturl) return data.shorturl;
-    console.error(`is.gd error: ${data.errormessage}`);
-    return longUrl;
+    const short = await resp.text();
+    return short.trim() || longUrl;
   } catch (e) {
-    console.error("is.gd exception:", e);
+    console.error("TinyURL exception:", e);
     return longUrl;
   }
 }
