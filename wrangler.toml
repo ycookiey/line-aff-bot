@@ -1,0 +1,4 @@
+name = "line-aff-bot"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+account_id = "0ae949d229d9cc0aacd580a49bcc15ca"

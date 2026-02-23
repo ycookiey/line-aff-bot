@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+nul
+
+# Editors/IDEs
+.idea/
+.history/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Dependencies
+node_modules/
+
+# Build / Wrangler
+dist/
+.wrangler/
